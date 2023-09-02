@@ -52,4 +52,29 @@ document.addEventListener("DOMContentLoaded", () =>{
             cell.style.backgroundColor = colors[getRandomInt(6)];
         });
     });
+    document.addEventListener("keydown", (event)=>{
+        if(event.keyCode === 32){
+            event.preventDefault();
+            cells.forEach(cell => {
+                cell.className = 'cell';
+                let isRandom = getRandomInt(6);
+                console.log(isRandom);
+                if(isRandom === 0){
+                    cell.classList.add("all");
+                }else if(isRandom === 1){
+                    cell.classList.add("none");
+                }else{
+                    let addAnother = 1;
+                    while(addAnother === 1){
+                        let index = getRandomInt(4);
+                        cell.classList.add(figures[index]);
+                        addAnother = getRandomInt(2);
+                    }
+                }
+            });
+            cells.forEach(cell => {
+                cell.style.backgroundColor = colors[getRandomInt(6)];
+            });
+        }
+    });
 });
